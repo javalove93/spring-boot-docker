@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: priv-spring-boot-docker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: priv-spring-boot-docker
+  template:
+    metadata:
+      labels:
+        app: priv-spring-boot-docker
+    spec:
+      containers:
+      - name: priv-spring-boot-docker
+        image: javalove93/priv-spring-boot-docker
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "0.5"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
+
