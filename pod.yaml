@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-boot-docker
+  labels:
+    app: spring-boot-docker
+spec:
+  containers:
+  - name: spring-boot-docker
+    image: javalove93/spring-boot-docker
+    resources:
+      limits:
+        memory: "256Mi"
+        cpu: "0.5"
+    ports:
+    - containerPort: 8080
+
