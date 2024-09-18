@@ -18,6 +18,7 @@ public class SpringBootDockerApplication {
     String hostname = System.getenv().getOrDefault("HOSTNAME", "unknown");
 
     // 경로 /data/javalove93/message.txt 읽어서 문자열에 저장
+    String message = "";
     try {
       message = new String(Files.readAllBytes(Paths.get("/data/javalove93/message.txt")));
     } catch (IOException e) {
