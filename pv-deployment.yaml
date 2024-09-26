@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-docker
+  name: pv-spring-boot-docker
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: spring-boot-docker
+      app: pv-spring-boot-docker
   template:
     metadata:
       labels:
-        app: spring-boot-docker
+        app: pv-spring-boot-docker
     spec:
       containers:
-      - name: spring-boot-docker
+      - name: pv-spring-boot-docker
         image: javalove93/spring-boot-docker
         resources:
           limits:
@@ -28,4 +28,3 @@ spec:
         - name: app-shared-storage
           persistentVolumeClaim:
             claimName: nfs-pvc
-
