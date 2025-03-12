@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.ArrayList;
 // import java.nio.file.Files;
 // import java.nio.file.Paths;
 // import java.io.IOException;
@@ -28,6 +29,16 @@ public class SpringBootDockerApplication {
     // return "Hello Docker World from " + hostname + ", NFS message is " + message;
     return "Hello Docker World";
     // return "Hello Docker World V2!!";
+  }
+
+  // 메모리 낭비를 위해 byte array를 저장할 list
+  ArrayList memoryHog = new ArrayList();
+
+  @RequestMapping("/memhog")
+  public String memhog() {
+    // 100MB 메모리 사용
+    memoryHog.add(new byte[100 * 1024 * 1024]);
+    return "Allocated 100MB memory";
   }
 
   public static void main(String[] args) {
